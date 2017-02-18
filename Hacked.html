@@ -1,0 +1,33 @@
+<html>
+<head>
+<script type="text/javascript">
+	function readParams(){
+		var match,
+        pl     = /\+/g,  // Regex for replacing addition symbol with a space
+        search = /([^&=]+)=?([^&]*)/g,
+        decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
+        query  = window.location.search.substring(1);
+
+	    urlParams = {};
+	    while (match = search.exec(query)){
+	       urlParams[decode(match[1])] = decode(match[2]);
+	    }
+	    document.getElementById('username').innerHTML = urlParams["b"];
+	    document.getElementById('password').innerHTML = urlParams["a"];
+	}
+	setTimeout(readParams, 500);
+</script>
+</head>
+<body>
+<h1>Oh oh!</h1>
+<h2>The phishers got your details!</h2>
+<table style="font-size: 40px;">
+	<thead>
+		<th>Username&nbsp;&nbsp;</th><th>Password</th>
+	</thead>
+	<tbody>
+		<tr><td id="username"></td><td id="password"></td></tr>
+	</tbody>
+</table>
+</body>
+</html>
